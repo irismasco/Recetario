@@ -6,7 +6,6 @@ import { HomePage } from './home.page';
 
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { RecipesComponent } from '../pages/recipes/recipes.component';
 
 
 @NgModule({
