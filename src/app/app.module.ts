@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeService } from './services/recipe.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -27,7 +26,6 @@ import { environment } from 'src/environments/environment.prod';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    RecipeService,
     provideFirebaseApp(() => initializeApp({"projectId":"recetario-cf1b2","appId":"1:331554652313:web:806f621487d191c4d6b808","storageBucket":"recetario-cf1b2.appspot.com","apiKey":"AIzaSyAXeH3qOydqyeDdy3b2PndwHE8gKHTzP4s","authDomain":"recetario-cf1b2.firebaseapp.com","messagingSenderId":"331554652313","measurementId":"G-H5WZJ8872Z"})),
     provideAuth(() => getAuth())
   ],

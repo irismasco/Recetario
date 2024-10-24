@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/authetication.service';
+import { AuthServiceService } from 'src/app/authentcation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -11,9 +11,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  ionicForm!: FormGroup;
+  ionicForm: FormGroup | undefined;
 
-  constructor(private toastController: ToastController,private AlertController: AlertController,private loadingController: LoadingController,private authservice:AuthServiceService,private router: Router, public formBuilder: FormBuilder) { 
+  constructor(private toastController: ToastController,private loadingController: LoadingController,private authService:AuthServiceService,private router: Router, public formBuilder: FormBuilder) { 
 
   }
 
@@ -48,13 +48,23 @@ export class SignupPage implements OnInit {
   get errorControl() {
     return this.ionicForm.controls;
   }
+  // async signUpWithGoogle(){
+  //   const loading = await this.loadingController.create();
+  //   // await loading.present();
 
+  //   const user = await this.authService.GoogleAuth().then((re)=>{
+  //     console.log(re);
+      
+  //     // this.router.navigate(['/home'])
+  //   })
+  // }
+ 
   async signUP(){
     const loading = await this.loadingController.create();
     await loading.present();
     if (this.ionicForm.valid) {
 
-      const user = await this.authservice.registerUser(this.ionicForm.value.email, this.ionicForm.value.password,this.ionicForm.value.fullname).catch((err) => {
+      const user = await this.authService.registerUser(this.ionicForm.value.email, this.ionicForm.value.password,this.ionicForm.value.fullname).catch((err) => {
         this.presentToast(err)
         console.log(err);
         loading.dismiss();
