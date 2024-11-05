@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AngularFireModule} from '@angular/fire/compat';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MealListComponent } from './meal-list/meal-list.component';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,11 +15,14 @@ import { AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
-  declarations: [AppComponent],
+  
+  declarations: [AppComponent,MealListComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
+  
     FormsModule,
     AngularFireModule,
     AngularFireAuthModule,

@@ -12,17 +12,17 @@
         
       </ion-item>
     
-      <div style="padding-top: -26px;padding-bottom: 16px;" *ngIf="this.ionicForm.controls?.['email'].touched && this.ionicForm.controls?.['email'].invalid">
-          <ion-text *ngIf="errorControl.email.errors?.required" class="errorInput" color="danger">Email is required.</ion-text>
-          <ion-text *ngIf="errorControl.email.errors?.pattern" class="errorInput" color="danger">Please provide valid email.</ion-text>
+      <div style="padding-top: -26px;padding-bottom: 16px;" *ngIf="this.ionicForm.controls?.['email']?.touched && this.ionicForm.controls?.['email']?.invalid">
+          <ion-text *ngIf="errorControl?.['email']?.errors?.['required']" class="errorInput" color="danger">Email is required.</ion-text>
+          <ion-text *ngIf="errorControl?.['email']?.errors?.['pattern']" class="errorInput" color="danger">Please provide valid email.</ion-text>
       </div>
       <ion-item>
         <ion-input type="password" placeholder="password" formControlName="password" class="input" />
         <ion-icon name="lock-closed-outline"></ion-icon>
       </ion-item>
-      <div style="padding-top: -26px;padding-bottom: 16px;" *ngIf="this.ionicForm.controls?.['password'].touched && this.ionicForm.controls?.['password'].invalid">
-          <ion-text *ngIf="errorControl.password.errors?.required" class="errorInput" color="danger">password is required.</ion-text>
-          <ion-text *ngIf="errorControl.password.errors?.pattern" class="errorInput"  color="danger">Password Must contain at least one character</ion-text>
+      <div style="padding-top: -26px;padding-bottom: 16px;" *ngIf="this.ionicForm.controls?.['password']?.touched && this.ionicForm.controls?.['password']?.invalid">
+          <ion-text *ngIf="errorControl?.['password']?.errors?.['required']" class="errorInput" color="danger">password is required.</ion-text>
+          <ion-text *ngIf="errorControl?.['password']?.errors?.['pattern']" class="errorInput"  color="danger">Password Must contain at least one character</ion-text>
       </div>
     
       <div class="forgotpassword">
@@ -39,5 +39,13 @@
         <ion-icon name="chevron-forward"></ion-icon>
       </ion-fab-button>
     </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+      <ion-button [routerLink]="['/home']">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-button>
+    </ion-fab>
+    
+
   </form>
 </ion-content>

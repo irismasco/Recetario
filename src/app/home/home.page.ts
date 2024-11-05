@@ -1,15 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from '../authentcation.service';
+import { Router } from '@angular/router';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit{
+  email :any
 
-  constructor() { }
+  constructor(private authService:AuthServiceService,private router: Router) {
 
-  ngOnInit() {
+  }
+  ngOnInit(): void {
+
+    this.authService.getProfile().then(user => {
+      this.email = user?.email;
+      console.log(user?.email);
+    }).catch(error => {
+      console.error('Error getting user profile:', error);
+    });
+    
   }
 
+  
+
+
+ signOut(){
+  this.authService.signOut().then(() =>{
+    this.router.navigate(['/landing'])
+  })
+ }
 }

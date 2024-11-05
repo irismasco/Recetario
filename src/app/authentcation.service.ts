@@ -5,7 +5,6 @@ import { User } from 'firebase/auth';
 
 import { Observable, async } from 'rxjs';
 import firebase from 'firebase/compat/app';
-import { error, log } from 'console';
 import {
   CollectionReference,
   DocumentData,
@@ -16,7 +15,7 @@ import {
   updateDoc,
 } from '@firebase/firestore';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
-import { userInfo } from 'os';
+
 
 export interface Users{
   name:string;
